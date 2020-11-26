@@ -6,8 +6,14 @@ import App from './App';
 import  "./assets/css/assets.css"
 import "./assets/js/rem"
 
+
+import {HashRouter,BrowserRouter} from "react-router-dom"
+
 ReactDOM.render(
-    <App />,
+  <HashRouter>
+        <App />
+  </HashRouter>,
+
   document.getElementById('root')
 );
 
