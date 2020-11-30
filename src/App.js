@@ -17,7 +17,7 @@ export default function App() {
     <Route path="/register" component={Register}></Route>
     <Route path="/index" component={Index}></Route>
     <Route path="/detail" component={Detail}></Route>
-    <Route path="/list" component={List}></Route>
+    <Route path="/list/:name/:id" component={List}></Route>
     <Redirect to="/login"></Redirect>
 
   </Switch>

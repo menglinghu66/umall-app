@@ -4,13 +4,16 @@ import Banner from "./components/Banner/Banner"
 import Nav from "./components/Nav/Nav"
 import List from "./components/List/List"
 import Header from "../../components/Header/Header"
-import { reqHomeGoods } from '../../utils/http'
+import { reqHomeBanner, reqHomeGoods } from '../../utils/http'
 
 export default class Home extends Component {
     constructor() {
         super()
         this.state = {
-            goods: []
+            //列表数据
+            goods: [],
+            //轮播图数据
+            banner:[]
         }
     }
     componentDidMount(){
@@ -19,9 +22,14 @@ export default class Home extends Component {
                 goods:res.data.list[0].content
             })
         })
+        reqHomeBanner().then(res=>{
+            this.setState({
+                banner:res.data.list
+            })
+        })
     }
     render() {
-        let {goods} = this.state
+        let {goods,banner} = this.state
         return (
             <div>
                 <Header title="首页"></Header>
@@ -30,7 +38,7 @@ export default class Home extends Component {
                 <Info></Info>
 
                 {/* 轮播图 */}
-                <Banner></Banner>
+                <Banner banner={banner}></Banner>
 
                 {/* 导航 */}
                 <Nav></Nav>
